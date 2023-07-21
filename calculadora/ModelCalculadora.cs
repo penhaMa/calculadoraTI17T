@@ -95,5 +95,128 @@ namespace calculadora
 
             return resultado;
         }//fim do método
+
+        public double ConverterDecimal(string binario)
+        {
+            double dec = 0;
+            string caract = "";
+            int tamanho = binario.Length;
+            int pote = tamanho;
+            for(int i=0; i < tamanho; i++)
+            {
+                pote--;
+                caract = binario.Substring(i, 1);
+                if (caract == "1")
+                {
+                    dec += Math.Pow(2, pote);
+                }
+            }//fim do for
+            return dec;
+        }//fim do método converter decimal
+
+        public string ConverterBinario(int dec)
+        {
+            string binario = "";
+            int resto = 0;
+            do
+            {
+                resto = dec % 2;
+                binario += resto;
+                dec = dec / 2;
+            } while(dec != 0);
+            return new String(binario.Reverse().ToArray());
+        }//fim do método
+
+        public double ConverterHexaDecimal(string hexadecimal)
+        {
+            double dec = 0;
+            string caract = "";
+            int num = 0;
+            int tamanho = hexadecimal.Length;
+            int pote = tamanho;
+            for (int i = 0; i < tamanho; i++)
+            {
+                pote--;
+                caract = hexadecimal.Substring(i, 1);
+                switch (caract)
+                {
+                    case "A":
+                        num = 10;
+                        break;
+                    case "B":
+                        num = 11;
+                        break;
+                    case "C":
+                        num = 12;
+                        break;
+                    case "D":
+                        num = 13;
+                        break;
+                    case "E":
+                        num = 14;
+                        break;
+                    case "F":
+                        num = 15;
+                        break;
+                    default:
+                        num = Convert.ToInt32(caract);
+                        break;
+                }//fim do switch
+                dec += num * Math.Pow(16, pote);
+            }//fim do for
+            return dec;
+        }//fim do método converter decimal
+
+        public string ConverterDecimalHexa(int dec)
+        {
+            int resto = 0;
+            string hexadecimal = "";
+
+            do
+            {
+                resto = dec % 16;
+                switch (resto)
+                {
+                    case 10:
+                        hexadecimal += "A";
+                        break;
+                    case 11:
+                        hexadecimal += "B";
+                        break;
+                    case 12: 
+                        hexadecimal += "C";
+                        break;
+                    case 13: 
+                        hexadecimal += "D";
+                        break;
+                    case 14:
+                        hexadecimal += "E";
+                        break;
+                    case 15:
+                        hexadecimal += "F";
+                        break;
+                    default:
+                        hexadecimal += resto;
+                        break;
+                }//fim do switch
+                dec = dec / 16;
+            } while(dec != 0);
+            return new string(hexadecimal.Reverse().ToArray());
+        }//fim do converter
+
+        public string bhaskara(double a, double b, double c)
+        {
+            double delta = Math.Pow(b, 2) - 4 * a * c;
+            if (delta <= 0)
+            {
+                return "Impossível calcular X1 e X2, Delta: " + delta;
+            }
+            else
+            {
+                double X1 = (-b + Math.Sqrt(delta)) / (2 * a);
+                double X2 = (-b - Math.Sqrt(delta)) / (2 * a);
+                return "Delta: " + delta + "\nX1: " + X1 + "\nX2: " + X2; 
+            }
+        }//fim do bhaskara
     }//fim da classe
 }//fim do projeto
