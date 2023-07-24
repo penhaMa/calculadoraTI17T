@@ -41,6 +41,17 @@ namespace calculadora
                               "\n10. Hexadecimal para decimal "        +
                               "\n11. Decimal para Hexadecimal"         +
                               "\n12. Bhaskara"                         +
+                              "\n13. Binário para Hexadecimal"         +
+                              "\n14. Exercicio 1"                      +
+                              "\n15. Exercicio 2"                      +
+                              "\n16. Exercicio 3"                      +
+                              "\n17. Exercicio 4"                      +
+                              "\n18. Exercicio 5"                      +
+                              "\n19. Exercicio 6"                      +
+                              "\n20. Exercicio 7"                      +
+                              "\n21. Exercicio 8"                      +
+                              "\n22. Exercicio 9"                      +
+                              "\n23. Exercicio 10"                     +
                               "\n\nEscolha uma das opções acima: "  );
             int opcao = Convert.ToInt32(Console.ReadLine());
             return opcao;
@@ -118,6 +129,89 @@ namespace calculadora
                         Console.WriteLine("Informe C: ");
                         double c = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine(this.calculadora.bhaskara(a, b, c));
+                        break;
+                    case 13:
+                        Console.WriteLine("Informe o numero binário: ");
+                        string binario = Console.ReadLine();
+                        Console.WriteLine(this.calculadora.ConverterBinarioHexadecimal(binario));
+                        break;
+                    case 14:
+                        Console.WriteLine("Informe um número: ");
+                        int num = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("O dobro desse número é: " + this.calculadora.Dobro(num));
+                        Console.WriteLine("O triplo desse número é: " + this.calculadora.Triplo(num));
+                        break;
+                    case 15:
+                        Console.WriteLine("Informe seu salário: ");
+                        double salario = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("O salário com o aumento é: " + this.calculadora.Salario(salario));
+                        break;
+                    case 16:
+                        Console.WriteLine("Informe um número: ");
+                        int numero = Convert.ToInt32(Console.ReadLine());
+                        if (this.calculadora.ImparPar(numero) == 1)
+                        {
+                            Console.WriteLine("O número é Par"); 
+                        }
+                        else
+                        {
+                            Console.WriteLine("O número é Impar");
+                        }
+                        if (this.calculadora.NegativoPositivo(numero) == 3)
+                        {
+                            Console.WriteLine("O número é Positivo");
+                        }
+                        else
+                        {
+                            Console.WriteLine("O número é Negativo");
+                        }
+                        break;
+                    case 17:
+                        Console.WriteLine(this.calculadora.SomaNInteiros());
+                        break;
+                    case 18:
+                        Console.WriteLine("Informe o N: ");
+                        int numN = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Informe um número: ");
+                        int num1 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine(this.calculadora.TabuadaN(numN,num1));
+                        break;
+                    case 19:
+                        Console.WriteLine("Informe o número Inicial: ");
+                        int numI = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Informe o número Final: ");
+                        int numF = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine(this.calculadora.NumeroINumeroF(numI,numF));
+                        break;
+                    case 20:
+                        Console.WriteLine(this.calculadora.ImparEntre());
+                        break;
+                    case 21:
+                        int acu = 0;
+                        for (int i = 1; i <= 10; i++)
+                        {
+                            Console.WriteLine("Informe o " + i + " º número:");
+                            int numS = Convert.ToInt32(Console.ReadLine());
+
+                            acu = numS;
+                        }
+                            Console.WriteLine(this.calculadora.Soma10Números(acu));
+                        break;
+                    case 22:
+                        int ac = 0;
+                        for (int i = 1; i <= 10; i++)
+                        {
+                            Console.WriteLine("Informe o " + i + " º número:");
+                            int numS = Convert.ToInt32(Console.ReadLine());
+
+                            acu = numS;
+                        }
+                        Console.WriteLine(this.calculadora.SomaNúmeros(ac));
+                        break;
+                    case 23:
+                        Console.WriteLine("Informe um número: ");
+                        int numM = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine(this.calculadora.MediaAte0(numM));
                         break;
                     default:
                         Console.WriteLine("Opção escolhida não é valida");

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -96,9 +98,9 @@ namespace calculadora
             return resultado;
         }//fim do método
 
-        public double ConverterDecimal(string binario)
+        public int ConverterDecimal(string binario)
         {
-            double dec = 0;
+            int dec = 0;
             string caract = "";
             int tamanho = binario.Length;
             int pote = tamanho;
@@ -108,7 +110,7 @@ namespace calculadora
                 caract = binario.Substring(i, 1);
                 if (caract == "1")
                 {
-                    dec += Math.Pow(2, pote);
+                    dec += Convert.ToInt32(Math.Pow(2, pote));
                 }
             }//fim do for
             return dec;
@@ -218,5 +220,180 @@ namespace calculadora
                 return "Delta: " + delta + "\nX1: " + X1 + "\nX2: " + X2; 
             }
         }//fim do bhaskara
+
+        public string ConverterBinarioHexadecimal(string binario)
+        {
+            int dec = ConverterDecimal(binario);
+            string hex = ConverterDecimalHexa(dec);
+            return hex;
+        }//Fim do metodo ConverterBinarioHexadecimal
+
+
+        //----------------------------------------------------------------
+        //EXERCICIOS
+
+
+        //1
+        public int Dobro(int num)
+        {
+            num = num * 2;
+            return num;
+        }//Fim do método Dobro
+
+        public int Triplo(int num)
+        {
+            num = num * 3;
+            return num;
+        }//Fim do método Triplo
+
+
+        //2
+        public double Salario(double salario)
+        {
+            salario = salario * 0.3 + salario;
+            return salario;
+        }//Fim do método Salário
+
+
+        //3
+        public int ImparPar(int numero)
+        {
+            if (numero %2 == 0)
+            {
+                numero = 1;
+            }
+            else
+            {
+                numero = 2;
+            }
+            return numero;
+        }//Fim do método Impar Par
+
+        public int NegativoPositivo(int numero)
+        {
+            if (numero >= 0)
+            {
+                numero = 3;
+            }
+            else
+            {
+                numero = 4;
+            }
+            return numero;
+        }//Fim do método Negativo Positivo
+
+
+        //4
+        public int SomaNInteiros()
+        {
+            int resultado = 1;
+            for (int i = 1; i <= 100; i++)
+            {
+                resultado += i;
+            }//fim do for
+
+            return resultado;
+        }//Fim do método Soma Número Inteiro
+
+
+        //5
+        public string TabuadaN(int numN, int num1)
+        {
+            string resultado = "";
+
+            //Início;Fim;Contagem
+            for (int i = 1; i <= numN; i++)
+            {
+                resultado += "\n" + i + " * " + num1 + " = " + (num1 * i);
+            }//fim do for
+
+            return resultado;
+        }//Fim do método Soma Número Inteiro
+
+
+        //6
+        public string NumeroINumeroF(int numI,int numF)
+        {
+            string resultado = "";
+
+            //Início;Fim;Contagem
+            for (int i = numI; i <= numF; i++)
+            {
+                resultado += "\n" + i;
+            }//fim do for
+
+            return resultado;
+        }//Fim do método Número Inicial Número Final
+
+
+        //7
+        public string ImparEntre()
+        {
+            string resultado = "";
+
+            //Início;Fim;Contagem
+            for (int i = 100; i <= 200; i++)
+            {
+                if (i % 2 == 1)
+                {
+                    resultado += "\n" + i;
+                }
+            }//fim do for
+            
+            return resultado;
+        }//Fim do método Impar Entre
+
+
+        //8
+        public string Soma10Números(int numS)
+        {
+            string resultado = "";
+
+            //Início;Fim;Contagem
+            for (int i = 1; i <= 10; i++)
+            {
+                i += numS;
+                resultado += "\n" + (numS + i);
+            }//fim do for
+
+            return resultado;
+        }//Fim do método Soma de 10 Números
+
+
+        //9
+        public string SomaNúmeros(int numS)
+        {
+            string resultado = "";
+
+            //Início;Fim;Contagem
+            for (int i = 1; i <= 10; i++)
+            {
+                i += numS;
+                resultado += "\n" + (numS + i);
+            }//fim do for
+
+            return resultado;
+        }//Fim do método Soma Números
+
+
+        //10
+        public int MediaAte0(int numM)
+        {
+            do
+            {
+                int acu = 0;
+                if (numM % 2 == 0)
+                {
+                    acu += numM;
+                }
+                else
+                {
+                    numM = -1;
+                }
+                return acu / numM;
+            } while (numM == 0);
+            
+        }//Fim do método Média Até 0
+
     }//fim da classe
 }//fim do projeto
