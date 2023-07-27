@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Configuration;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -345,55 +346,195 @@ namespace calculadora
 
 
         //8
-        public string Soma10Números(int numS)
+        public int Soma10Números()
         {
-            string resultado = "";
+           
+            int contador = 0;
+            int numS;
 
             //Início;Fim;Contagem
             for (int i = 1; i <= 10; i++)
             {
-                i += numS;
-                resultado += "\n" + (numS + i);
+                Console.WriteLine("Informe um número: ");
+                numS = Convert.ToInt32(Console.ReadLine());
+                
+                contador += numS;
             }//fim do for
 
-            return resultado;
+            return contador;
         }//Fim do método Soma de 10 Números
 
 
         //9
-        public string SomaNúmeros(int numS)
+        public int SomaNumeros()
         {
-            string resultado = "";
+            int contador = 0;
+            int numS;
 
+            do
             //Início;Fim;Contagem
-            for (int i = 1; i <= 10; i++)
             {
-                i += numS;
-                resultado += "\n" + (numS + i);
-            }//fim do for
+                Console.WriteLine("Informe um número: ");
+                numS = Convert.ToInt32(Console.ReadLine());
 
-            return resultado;
+                contador += numS;
+            }
+            while (numS != 0);
+
+            return contador;
         }//Fim do método Soma Números
 
 
         //10
-        public int MediaAte0(int numM)
+        public int MediaAte0()
         {
+            int numM;
+            int cont = 0;
+            int acu = 0;
             do
             {
-                int acu = 0;
+                Console.WriteLine("Informe um número: ");
+                numM = Convert.ToInt32(Console.ReadLine());
                 if (numM % 2 == 0)
                 {
                     acu += numM;
+                    cont++;
+                }
+            } while (numM != 0);
+            return acu / (cont - 1);
+
+        }//Fim do método Média Até 0
+
+        //11
+        public string ValoresIAte0()
+        {
+            int maior = 0;
+            int menor = 0;
+            Boolean flag = false;
+            int numeroso = 0;
+            string msg = "";
+
+            do
+            {
+                Console.WriteLine("Informe um número: ");
+                numeroso = Convert.ToInt32(Console.ReadLine());
+                if (flag == false)
+                {
+                    maior = numeroso;
+                    menor = numeroso;
+                    flag = true;
+                }
+
+                if (numeroso != 0)
+                {
+                    if (numeroso > maior)
+                    {
+                        maior = numeroso;
+                    }//Fim do if
+                    if (numeroso < menor)
+                    {
+                        menor = numeroso;
+                    }//Fim do if
+
+                }//Fim do ifzão
+
+                msg = ("O maior número é: " + maior + " e o menor número é: " + menor);
+
+            } while (numeroso != 0); // Fim do Do - While
+            return msg;
+        }
+
+
+        //12
+        public string SomaPositivo()
+        {
+            int soma = 0;
+            int cont = 0;
+            int i = 0;
+            string msg = "";
+            int numP = 0;
+            //Início;Fim;Contagem
+            for (i = 1; i <= 20; i++)
+            {
+                Console.WriteLine(i + "º Número: ");
+                numP = Convert.ToInt32(Console.ReadLine());
+
+                if (numP >= 0)
+                {
+                    soma += numP;
                 }
                 else
                 {
-                    numM = -1;
+                    cont += 1;
                 }
-                return acu / numM;
-            } while (numM == 0);
-            
-        }//Fim do método Média Até 0
+            }//fim do for
+            msg = "Soma dos positivos: " + numP + "\nContagem dos negativos: " + cont;
+            return msg;
+
+        }//Fim do método Soma Positivo
+
+
+        //13
+        public int CalcularFatorial(int numFato)
+        {
+            if (numFato == 0 || numFato == 1)
+                return 1;
+            else
+                return numFato * CalcularFatorial(numFato - 1);
+        }//Fim do método Fatorial
+
+
+        //14
+        public string MediaJogadores()
+        {
+            int numeroJ = 0;
+            double altu;
+            double cont = 0;
+            string msg = "";
+            double media = 0;
+
+            Console.WriteLine("Informe o número de jogadores: ");
+            numeroJ = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 1; i <= numeroJ; i++)
+            {
+                Console.WriteLine("Informe a altura do " + i + "º Jogador: ");
+                altu = Convert.ToDouble(Console.ReadLine());
+
+                cont += altu;
+                media = cont / numeroJ;
+            }
+            msg = "Á média dos jogadores é: " + media;
+            return msg;
+        }//Fim do método Média dos Jogadores
+
+
+        //15
+        public string ConcursoMiss()
+        {
+            string nome = "";
+            int nota = 0;
+            string msg = "";
+            string contNome = "";
+            int contNota = 0;
+
+            for (int i = 1; i <= 5; i++)
+            {
+                Console.WriteLine("Informe o nome da " + i + "º Candidata: ");
+                nome = (Console.ReadLine());
+                contNome += nome;
+
+                Console.WriteLine("Informe a nota da " + i + "º Candidata: ");
+                nota = Convert.ToInt32(Console.ReadLine());
+                contNota += nota;
+            }
+            if (nota <= 0) 
+            {
+                Console.WriteLine("Digite uma nota maior que 0");
+            }
+            msg = "Nome: " + nome + "\nNota: " + nota;
+            return msg;
+        }//Fim do método Concurso de Miss
 
     }//fim da classe
 }//fim do projeto
