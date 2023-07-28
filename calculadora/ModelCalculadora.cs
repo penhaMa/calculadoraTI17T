@@ -411,36 +411,36 @@ namespace calculadora
             int maior = 0;
             int menor = 0;
             Boolean flag = false;
-            int numeroso = 0;
+            int numeroAte = 0;
             string msg = "";
 
             do
             {
                 Console.WriteLine("Informe um número: ");
-                numeroso = Convert.ToInt32(Console.ReadLine());
+                numeroAte = Convert.ToInt32(Console.ReadLine());
                 if (flag == false)
                 {
-                    maior = numeroso;
-                    menor = numeroso;
+                    maior = numeroAte;
+                    menor = numeroAte;
                     flag = true;
                 }
 
-                if (numeroso != 0)
+                if (numeroAte != 0)
                 {
-                    if (numeroso > maior)
+                    if (numeroAte > maior)
                     {
-                        maior = numeroso;
-                    }//Fim do if
-                    if (numeroso < menor)
+                        maior = numeroAte;
+                    }
+                    if (numeroAte < menor)
                     {
-                        menor = numeroso;
-                    }//Fim do if
+                        menor = numeroAte;
+                    }
 
-                }//Fim do ifzão
+                }
 
                 msg = ("O maior número é: " + maior + " e o menor número é: " + menor);
 
-            } while (numeroso != 0); // Fim do Do - While
+            } while (numeroAte != 0); 
             return msg;
         }
 
@@ -514,27 +514,186 @@ namespace calculadora
         {
             string nome = "";
             int nota = 0;
-            string msg = "";
-            string contNome = "";
-            int contNota = 0;
+            int maiorNota = 0;
+            string ganhadora = "";
+            Boolean flag = false;
 
-            for (int i = 1; i <= 5; i++)
+
+            for (int i = 1; i <= 3; i++)
             {
+               
                 Console.WriteLine("Informe o nome da " + i + "º Candidata: ");
-                nome = (Console.ReadLine());
-                contNome += nome;
+                nome = Convert.ToString(Console.ReadLine());
 
                 Console.WriteLine("Informe a nota da " + i + "º Candidata: ");
                 nota = Convert.ToInt32(Console.ReadLine());
-                contNota += nota;
+
+
+                if (nota < 0 || nota > 10)
+                {
+                    Console.WriteLine("Insira um valor entre 0 e 10! ");
+                    nota = 0;
+                    nome = "";
+                    i = i - 1;
+                }
+
+                if (flag == false)
+                {
+                    maiorNota = nota;
+                    flag = true;
+                    ganhadora = nome;
+                }
+                if (nota > maiorNota)
+                {
+                    maiorNota = nota;
+                    ganhadora = nome;
+                }
             }
-            if (nota <= 0) 
-            {
-                Console.WriteLine("Digite uma nota maior que 0");
-            }
-            msg = "Nome: " + nome + "\nNota: " + nota;
-            return msg;
+            return "A maior nota é: " + maiorNota + "\nO nome da ganhadora é:" + ganhadora;
         }//Fim do método Concurso de Miss
+
+
+        //16
+        public string VotosMunicipio()
+        {
+            double numeroTotal = 0;
+            double numeroVB = 0;
+            double numeroVN = 0;
+            double numeroVV = 0;
+            string msg = "";
+            double contaVB = 0;
+            double contaVN = 0;
+            double contaVV = 0;
+            double soma = 0;
+
+
+            Console.WriteLine("Informe o número total de eleitores: ");
+            numeroTotal = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Informe o número de votos em branco: ");
+            numeroVB = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Informe o número de votos nulos: ");
+            numeroVN = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Informe o número de votos válidos: ");
+            numeroVV = Convert.ToInt32(Console.ReadLine());
+
+            soma = numeroVB + numeroVN + numeroVV;
+            do
+            {
+                if (soma > numeroTotal)
+                {
+                    Console.WriteLine("Informe um número menor de votos do que o número de eleitores");
+                }
+                    
+            } while (soma != numeroTotal);
+
+            contaVB = (numeroVB * 100) / numeroTotal;
+            contaVN = (numeroVN * 100) / numeroTotal;
+            contaVV = (numeroVV * 100) / numeroTotal;
+
+            msg = "O percentual de votos em Branco é de: " + contaVB + "%" +
+                  "\nO percentual de votos Nulos é de: " + contaVN + "%" +
+                  "\nO percentual de votos Válidos é de: " + contaVV + "%";
+            return msg;
+        }//Fim do método Votos Município
+
+
+        //17
+        public string CustoDoCarro()
+        {
+            double percenDoDistri = 0.28;
+            double imposto = 0.45;
+            double custoFabri = 0;
+            string msg = "";
+            double conta = 0;
+
+
+            Console.WriteLine("Informe o custo de fábrica do carro: ");
+            custoFabri = Convert.ToInt32(Console.ReadLine());
+
+            conta = ((custoFabri * percenDoDistri) + custoFabri) + ((custoFabri * imposto) + custoFabri);
+            
+
+            msg = "O custo final para o consumidor é de: " + "R$" + conta + ",00" + "reais";
+            return msg;
+        }//Fim do método Custo do Carro
+
+
+        //18
+        public string TransformaEmDia()
+        {
+            int ano = 0;
+            int mes = 0;
+            int dia = 0;
+            int idade = 0; 
+            string msg = "";
+            int contaAno = 0;
+            int contaMes = 0;
+
+            Console.WriteLine("Escreva sua idade em anos: ");
+            ano = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Escreva sua idade em mêses: ");
+            mes = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Escreva sua idade em dias: ");
+            dia = Convert.ToInt32(Console.ReadLine());
+
+            contaAno = ano * 365;
+            contaMes = mes * 30;
+
+            idade = contaAno + contaMes + dia;
+
+            msg = "Sua idade em dias: " + idade;
+            return msg;
+        }//Fim do método Transforma em dias
+
+
+        //19
+        public int MaiorVetor()
+        {
+            int maior = 0;
+
+            int[] vet = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(i + "º Número");
+                vet[i] = Convert.ToInt32(Console.ReadLine());
+                if (vet[i] > maior)
+                { 
+                    maior = vet[i];
+                }
+            }
+            return maior;
+        }//Fim do método Maior Vetor
+
+
+        //20
+        public string OrdemVetorParImpar()
+        {
+            int acuPar = 0;
+            int acuImpar = 0;
+            string msg = "";
+
+            int[] vet = new int[4];
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine(i + "º Número");
+                vet[i] = Convert.ToInt32(Console.ReadLine());
+                if (vet[i] % 2 == 0)
+                {
+                    acuPar += vet[i];
+                }
+                else
+                {
+                    acuImpar += vet[i];
+                }
+            }
+            msg = "Pares: " + acuPar + "\nImpares: " + acuImpar;
+            return msg;
+        }//Fim do método Ordem Vetor 
 
     }//fim da classe
 }//fim do projeto

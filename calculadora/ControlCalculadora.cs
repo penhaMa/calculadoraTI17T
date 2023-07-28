@@ -57,6 +57,11 @@ namespace calculadora
                               "\n26. Exercicio 13"                     +
                               "\n27. Exercicio 14"                     +
                               "\n28. Exercicio 15"                     +
+                              "\n29. Exercicio 16"                     +
+                              "\n30. Exercicio 17"                     +
+                              "\n31. Exercicio 18"                     +
+                              "\n32. Exercicio 19"                     +
+                              "\n33. Exercicio 20"                     +
                               "\n\nEscolha uma das opções acima: "  );
             int opcao = Convert.ToInt32(Console.ReadLine());
             return opcao;
@@ -247,8 +252,36 @@ namespace calculadora
                     case 28:
                         Console.WriteLine(this.calculadora.ConcursoMiss());
                         break;
+
+                    //16
+                    case 29:
+                        Console.WriteLine(this.calculadora.VotosMunicipio());
+                        break;
+
+
+                    //17
+                    case 30:
+                        Console.WriteLine(this.calculadora.CustoDoCarro());
+                        break;
+
+
+                    //18
+                    case 31:
+                        Console.WriteLine(this.calculadora.TransformaEmDia());
+                        break;
+
+
+                    //19  
+                    case 32:
+                        Console.WriteLine(this.calculadora.MaiorVetor());
+                        break;
+
+                    //20  
+                    case 33:
+                        Console.WriteLine(this.calculadora.OrdemVetorParImpar());
+                        break;
                     default:
-                        Console.WriteLine("Opção escolhida não é valida");
+                        Console.WriteLine("Opção escolhida não e valida: ");
                         break;
                 }//fim do switch
                 
